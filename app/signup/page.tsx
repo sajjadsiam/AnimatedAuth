@@ -195,9 +195,9 @@ export default function SignUpPage() {
                 className="grid grid-cols-3 gap-4 mb-6"
               >
                 {[
-                  { icon: FaGoogle, color: 'from-red-500 to-orange-500' },
-                  { icon: FaGithub, color: 'from-gray-700 to-gray-900' },
-                  { icon: FaApple, color: 'from-gray-600 to-gray-800' },
+                 { icon: FaGoogle, color: 'from-red-500 to-orange-500', darkColor: 'dark:from-gray-800 dark:to-black' },
+              { icon: FaGithub, color: 'from-gray-700 to-gray-900', darkColor: 'dark:from-gray-800 dark:to-black' },
+              { icon: FaApple, color: 'from-gray-600 to-gray-800', darkColor: 'dark:from-gray-800 dark:to-black' },
                 ].map((social, idx) => (
                   <motion.button
                     key={idx}

@@ -123,15 +123,15 @@ export default function LoginPage() {
             className="grid grid-cols-3 gap-4 mb-6"
           >
             {[
-              { icon: FaGoogle, color: 'from-red-500 to-orange-500' },
-              { icon: FaGithub, color: 'from-gray-700 to-gray-900' },
-              { icon: FaApple, color: 'from-gray-600 to-gray-800' },
+              { icon: FaGoogle, color: 'from-red-500 to-orange-500', darkColor: 'dark:from-gray-800 dark:to-black' },
+              { icon: FaGithub, color: 'from-gray-700 to-gray-900', darkColor: 'dark:from-gray-800 dark:to-black' },
+              { icon: FaApple, color: 'from-gray-600 to-gray-800', darkColor: 'dark:from-gray-800 dark:to-black' },
             ].map((social, idx) => (
               <motion.button
                 key={idx}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`glass-effect p-4 rounded-xl bg-gradient-to-br ${social.color} hover:shadow-lg transition-all duration-300`}
+                className={`glass-effect p-4 rounded-xl bg-gradient-to-br ${social.color} ${social.darkColor} hover:shadow-lg transition-all duration-300`}
               >
                 <social.icon className="text-white text-xl mx-auto" />
               </motion.button>
