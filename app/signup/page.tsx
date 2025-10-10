@@ -80,62 +80,166 @@ export default function SignUpPage() {
       
       {/* Animated Background */}
       <div className="absolute inset-0">
+        {/* Main gradient blobs with advanced animations */}
         <motion.div
-          className="absolute top-10 right-10 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          className="absolute top-10 right-10 w-[500px] h-[500px] bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
           animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 50, 0],
+            scale: [1, 1.4, 1.2, 1],
+            x: [0, 80, -40, 0],
+            y: [0, -50, 30, 0],
+            rotate: [0, 120, 240, 360],
           }}
           transition={{
-            duration: 10,
+            duration: 18,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <motion.div
-          className="absolute bottom-10 left-10 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
           animate={{
-            scale: [1, 1.2, 1],
-            x: [0, -50, 0],
+            scale: [1, 1.3, 1.5, 1],
+            x: [0, -70, 50, 0],
+            y: [0, 60, -40, 0],
+            rotate: [0, -90, -180, -360],
           }}
           transition={{
-            duration: 12,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <motion.div
-          className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[500px] h-[500px] bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
           animate={{
-            scale: [1, 1.4, 1],
+            scale: [1, 1.5, 1.2, 1],
+            rotate: [0, 180, 360, 0],
+            x: [0, 60, -60, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 16,
             repeat: Infinity,
             ease: "easeInOut"
+          }}
+        />
+        
+        {/* Additional gradient orbs */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500 rounded-full mix-blend-multiply filter blur-2xl opacity-25"
+          animate={{
+            scale: [1, 1.8, 1.3, 1],
+            x: [0, -90, 70, 0],
+            y: [0, 70, -60, 0],
+            rotate: [0, 270, 0],
+          }}
+          transition={{
+            duration: 24,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-2xl opacity-25"
+          animate={{
+            scale: [1, 1.7, 1.4, 1],
+            x: [0, 100, -80, 0],
+            y: [0, -80, 60, 0],
+            rotate: [0, -270, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Animated shapes with higher visibility */}
+        <motion.div
+          className="absolute top-1/2 right-1/3 w-56 h-56 border-[6px] border-cyan-400/25 rounded-full"
+          animate={{
+            scale: [1, 2.5, 1],
+            opacity: [0.2, 0.5, 0.2],
+            rotate: [0, 360, 720],
+          }}
+          transition={{
+            duration: 16,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute top-2/3 left-1/4 w-48 h-48 border-[6px] border-emerald-400/25 rotate-45"
+          animate={{
+            scale: [1, 2, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [45, 225, 405],
+          }}
+          transition={{
+            duration: 13,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        {/* Pulsing accent lights */}
+        <motion.div
+          className="absolute top-20 right-1/4 w-48 h-48 bg-cyan-400/15 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 2.5, 1],
+            opacity: [0.15, 0.5, 0.15],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-1/3 w-48 h-48 bg-purple-400/15 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 2.3, 1],
+            opacity: [0.15, 0.5, 0.15],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
           }}
         />
       </div>
 
       {/* Particle Effects */}
-      {[...Array(15)].map((_, i) => (
+      {[...Array(35)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-3 h-3 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full opacity-30"
+          className="absolute rounded-full"
           style={{
+            width: Math.random() * 14 + 5,
+            height: Math.random() * 14 + 5,
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
+            background: i % 4 === 0 
+              ? 'linear-gradient(135deg, rgba(34, 211, 238, 0.6), rgba(168, 85, 247, 0.6))' 
+              : i % 4 === 1
+              ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.6), rgba(139, 92, 246, 0.6))'
+              : i % 4 === 2
+              ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(236, 72, 153, 0.6))'
+              : 'linear-gradient(135deg, rgba(168, 85, 247, 0.6), rgba(34, 211, 238, 0.6))',
+            boxShadow: '0 0 25px rgba(168, 85, 247, 0.4)',
           }}
           animate={{
-            y: [0, -40, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 0.6, 0.3],
+            y: [0, Math.random() * -180 - 100, 0],
+            x: [0, Math.random() * 120 - 60, 0],
+            scale: [1, Math.random() * 2.5 + 1.5, 1],
+            opacity: [0.4, 0.9, 0.4],
+            rotate: [0, Math.random() * 360, 720],
           }}
           transition={{
-            duration: 4 + Math.random() * 2,
+            duration: Math.random() * 8 + 7,
             repeat: Infinity,
-            delay: Math.random() * 2,
+            delay: Math.random() * 5,
+            ease: "easeInOut"
           }}
         />
       ))}

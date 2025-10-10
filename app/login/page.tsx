@@ -54,60 +54,163 @@ export default function LoginPage() {
       
       {/* Animated Background */}
       <div className="absolute inset-0">
+        {/* Main gradient blobs with advanced animations */}
         <motion.div
-          className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
           animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
+            scale: [1, 1.3, 1.1, 1],
+            rotate: [0, 90, 180, 0],
+            x: [0, 100, -50, 0],
+            y: [0, 50, -40, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <motion.div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
           animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
+            scale: [1, 1.4, 1.2, 1],
+            rotate: [0, -90, -180, 0],
+            x: [0, -80, 40, 0],
+            y: [0, -50, 30, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
+          animate={{
+            scale: [1, 1.5, 1.3, 1],
+            rotate: [0, 180, 360, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Additional gradient orbs */}
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-2xl opacity-25"
+          animate={{
+            scale: [1, 1.6, 1],
+            x: [0, 120, 0],
+            y: [0, -60, 0],
+            rotate: [0, 360, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-rose-500 rounded-full mix-blend-multiply filter blur-2xl opacity-25"
+          animate={{
+            scale: [1, 1.7, 1],
+            x: [0, -100, 0],
+            y: [0, 80, 0],
+            rotate: [0, -360, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Animated rings with higher visibility */}
+        <motion.div
+          className="absolute top-1/3 left-1/3 w-64 h-64 border-[6px] border-purple-400/20 rounded-full"
+          animate={{
+            scale: [1, 2.5, 1],
+            opacity: [0.2, 0.5, 0.2],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: 12,
             repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/3 w-72 h-72 border-[6px] border-pink-400/20 rounded-full"
+          animate={{
+            scale: [1, 3, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        {/* Pulsing glow effects */}
+        <motion.div
+          className="absolute top-10 left-1/2 w-40 h-40 bg-indigo-400/10 rounded-full blur-xl"
+          animate={{
+            scale: [1, 2, 1],
+            opacity: [0.1, 0.4, 0.1],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          className="absolute bottom-10 right-1/2 w-40 h-40 bg-pink-400/10 rounded-full blur-xl"
           animate={{
-            scale: [1, 1.4, 1],
+            scale: [1, 2.2, 1],
+            opacity: [0.1, 0.4, 0.1],
           }}
           transition={{
-            duration: 8,
+            duration: 5,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
+            delay: 2,
           }}
         />
       </div>
 
       {/* Floating Elements */}
-      {[...Array(20)].map((_, i) => (
+      {[...Array(40)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-white rounded-full opacity-20"
+          className="absolute rounded-full"
           style={{
+            width: Math.random() * 12 + 4,
+            height: Math.random() * 12 + 4,
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
+            background: i % 3 === 0 
+              ? 'linear-gradient(45deg, rgba(139, 92, 246, 0.5), rgba(236, 72, 153, 0.5))' 
+              : i % 3 === 1
+              ? 'linear-gradient(45deg, rgba(99, 102, 241, 0.5), rgba(168, 85, 247, 0.5))'
+              : 'linear-gradient(45deg, rgba(236, 72, 153, 0.5), rgba(244, 114, 182, 0.5))',
+            boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
           }}
           animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.5, 0.2],
+            y: [0, Math.random() * -150 - 80, 0],
+            x: [0, Math.random() * 100 - 50, 0],
+            scale: [1, Math.random() * 2 + 1, 1],
+            opacity: [0.3, 0.8, 0.3],
+            rotate: [0, 360, 0],
           }}
           transition={{
-            duration: 3 + Math.random() * 2,
+            duration: Math.random() * 6 + 6,
             repeat: Infinity,
-            delay: Math.random() * 2,
+            delay: Math.random() * 4,
+            ease: "easeInOut"
           }}
         />
       ))}
