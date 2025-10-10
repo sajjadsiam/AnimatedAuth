@@ -5,12 +5,15 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FaEnvelope, FaLock, FaGoogle, FaGithub, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa'
 import ThemeToggle from '../components/ThemeToggle'
+import OAuthDemoModal from '../components/OAuthDemoModal'
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [showOAuthModal, setShowOAuthModal] = useState(false)
+  const [selectedProvider, setSelectedProvider] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -22,10 +25,32 @@ export default function LoginPage() {
     }, 2000)
   }
 
+  const handleSocialLogin = (provider: string) => {
+    // Demo message showing OAuth setup instructions
+    const isDemoMode = !process.env.NEXT_PUBLIC_URL || process.env.NEXT_PUBLIC_URL === 'http://localhost:3000'
+    
+    if (isDemoMode) {
+      setSelectedProvider(provider)
+      setShowOAuthModal(true)
+      return
+    }
+    
+    // Redirect to OAuth API route
+    window.location.href = `/api/auth/${provider.toLowerCase()}`
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
       {/* Theme Toggle */}
       <ThemeToggle />
+      
+      {/* OAuth Demo Modal */}
+      {showOAuthModal && (
+        <OAuthDemoModal
+          provider={selectedProvider}
+          onClose={() => setShowOAuthModal(false)}
+        />
+      )}
       
       {/* Animated Background */}
       <div className="absolute inset-0">
@@ -123,17 +148,20 @@ export default function LoginPage() {
             className="grid grid-cols-3 gap-4 mb-6"
           >
             {[
-              { icon: FaGoogle, color: 'from-red-500 to-orange-500', darkColor: 'dark:from-gray-800 dark:to-black' },
-              { icon: FaGithub, color: 'from-gray-700 to-gray-900', darkColor: 'dark:from-gray-800 dark:to-black' },
-              { icon: FaApple, color: 'from-gray-600 to-gray-800', darkColor: 'dark:from-gray-800 dark:to-black' },
+              { icon: FaGoogle, name: 'Google', label: 'Google' },
+              { icon: FaGithub, name: 'GitHub', label: 'GitHub' },
+              { icon: FaApple, name: 'Apple', label: 'Apple' },
             ].map((social, idx) => (
               <motion.button
                 key={idx}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`glass-effect p-4 rounded-xl bg-gradient-to-br ${social.color} ${social.darkColor} hover:shadow-lg transition-all duration-300`}
+                onClick={() => handleSocialLogin(social.name)}
+                className="glass-effect p-4 rounded-xl bg-gradient-to-br from-gray-400 to-gray-600 dark:from-gray-800 dark:to-black hover:shadow-lg transition-all duration-300"
+                aria-label={`Sign in with ${social.label}`}
+                title={`Sign in with ${social.label}`}
               >
-                <social.icon className="text-white text-xl mx-auto" />
+                <social.icon className="text-gray-800 dark:text-white text-xl mx-auto" />
               </motion.button>
             ))}
           </motion.div>

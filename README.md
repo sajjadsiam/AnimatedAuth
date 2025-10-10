@@ -21,7 +21,8 @@ A beautiful and modern authentication system built with **Next.js 14**, **Tailwi
 
 ### 🔐 Login Page
 - **Glass-morphism design** with backdrop blur effects
-- **Social login buttons** (Google, GitHub, Apple) with proper visibility in both themes
+- **OAuth authentication** (Google, GitHub, Apple) with full API integration
+- **Social login buttons** with proper visibility in both themes
 - **Show/hide password** toggle with eye icon
 - **Remember me** checkbox
 - **Forgot password** link (navigates to reset page)
@@ -30,6 +31,7 @@ A beautiful and modern authentication system built with **Next.js 14**, **Tailwi
 
 ### 📝 Signup Page
 - **Multi-step form** with progress indicators
+- **OAuth signup integration** (Google, GitHub, Apple)
 - **Real-time password strength meter** (Weak/Fair/Good/Strong)
 - **Password match validation** with visual feedback
 - **Social signup options** with proper icon visibility
@@ -102,13 +104,34 @@ A beautiful and modern authentication system built with **Next.js 14**, **Tailwi
 3. **Open your browser:**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 📦 Tech Stack
+## � OAuth Setup (Optional)
+
+To enable Google, GitHub, and Apple authentication:
+
+1. **Follow the setup guide:**
+   See [OAUTH_SETUP.md](./OAUTH_SETUP.md) for detailed instructions
+
+2. **Create `.env.local`:**
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. **Configure OAuth providers:**
+   - Set up OAuth apps for Google, GitHub, and Apple
+   - Add credentials to `.env.local`
+
+4. **The authentication will work automatically** once configured!
+
+**Note:** The app works without OAuth - social login buttons will show an error if not configured.
+
+## �📦 Tech Stack
 
 - **Framework:** Next.js 14 (App Router)
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
 - **Icons:** React Icons
 - **Language:** TypeScript
+- **Authentication:** Custom OAuth implementation (Google, GitHub, Apple)
 
 ## 🎨 Color Palette
 
@@ -130,22 +153,38 @@ A beautiful and modern authentication system built with **Next.js 14**, **Tailwi
 
 ```
 ├── app/
+│   ├── api/
+│   │   └── auth/
+│   │       ├── google/
+│   │       │   ├── route.ts           # Google OAuth initiation
+│   │       │   └── callback/
+│   │       │       └── route.ts       # Google OAuth callback
+│   │       ├── github/
+│   │       │   ├── route.ts           # GitHub OAuth initiation
+│   │       │   └── callback/
+│   │       │       └── route.ts       # GitHub OAuth callback
+│   │       └── apple/
+│   │           ├── route.ts           # Apple OAuth initiation
+│   │           └── callback/
+│   │               └── route.ts       # Apple OAuth callback
 │   ├── components/
-│   │   └── ThemeToggle.tsx     # Theme toggle button
+│   │   └── ThemeToggle.tsx            # Theme toggle button
 │   ├── contexts/
-│   │   └── ThemeContext.tsx    # Theme provider & hook
+│   │   └── ThemeContext.tsx           # Theme provider & hook
 │   ├── login/
-│   │   └── page.tsx            # Login page
+│   │   └── page.tsx                   # Login page with OAuth
 │   ├── signup/
-│   │   └── page.tsx            # Signup page
+│   │   └── page.tsx                   # Signup page with OAuth
 │   ├── forgot-password/
-│   │   └── page.tsx            # Forgot password page
-│   ├── globals.css             # Global styles (dark/light mode)
-│   ├── layout.tsx              # Root layout with ThemeProvider
-│   └── page.tsx                # Home page
-├── tailwind.config.js          # Tailwind configuration
-├── tsconfig.json               # TypeScript configuration
-└── package.json                # Dependencies
+│   │   └── page.tsx                   # Forgot password page
+│   ├── globals.css                    # Global styles (dark/light mode)
+│   ├── layout.tsx                     # Root layout with ThemeProvider
+│   └── page.tsx                       # Home page
+├── .env.example                       # Environment variables template
+├── OAUTH_SETUP.md                     # OAuth setup guide
+├── tailwind.config.js                 # Tailwind configuration
+├── tsconfig.json                      # TypeScript configuration
+└── package.json                       # Dependencies
 ```
 
 ## 🎭 Animation Details
