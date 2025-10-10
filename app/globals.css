@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Dark Mode (Default) */
+  .dark body {
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+  }
+  
+  /* Light Mode */
+  .light body {
+    @apply bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50;
+  }
+  
+  body {
+    transition: background 0.3s ease;
+  }
+}
+
+@layer utilities {
+  /* Dark Mode Glass Effect */
+  .dark .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Light Mode Glass Effect */
+  .light .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+  
+  /* Dark Mode Text Colors */
+  .dark .text-primary {
+    @apply text-white;
+  }
+  
+  .dark .text-secondary {
+    @apply text-gray-300;
+  }
+  
+  .dark .text-muted {
+    @apply text-gray-400;
+  }
+  
+  /* Light Mode Text Colors */
+  .light .text-primary {
+    @apply text-gray-900;
+  }
+  
+  .light .text-secondary {
+    @apply text-gray-700;
+  }
+  
+  .light .text-muted {
+    @apply text-gray-600;
+  }
+}
